@@ -1,0 +1,16 @@
+<!-- dispute_list.html -->
+{% extends './base.html' %}
+
+{% block content %}
+<h2>Dispute List</h2>
+<a href="{% url 'dispute_create' %}">Create New Dispute</a>
+<ul>
+    {% for dispute in disputes %}
+    <li>
+        {{ dispute.reason }} -
+        <a href="{% url 'dispute_update' pk=dispute.pk %}">Edit</a> |
+        <a href="{% url 'dispute_delete' pk=dispute.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

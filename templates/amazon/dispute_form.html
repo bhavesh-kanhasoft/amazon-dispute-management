@@ -1,0 +1,12 @@
+<!-- dispute_form.html -->
+{% extends './base.html' %}
+
+{% block content %}
+<h2>{% if object %}Update{% else %}Create{% endif %} Dispute</h2>
+<form method="post"
+    action="{% if object %}{% url 'dispute_update' pk=object.pk %}{% else %}{% url 'dispute_create' %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if object %}Update{% else %}Create{% endif %} Dispute</button>
+</form>
+{% endblock %}

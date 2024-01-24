@@ -1,0 +1,23 @@
+version: "3"
+
+volumes:
+  media:
+    driver: local
+
+services:
+  web:
+    build: .
+    image: amazon
+    command: python manage.py runserver 0.0.0.0:8000
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - amazon_network
+
+networks:
+  amazon_network:
+    ipam:
+      driver: default
